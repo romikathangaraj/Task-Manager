@@ -31,7 +31,7 @@ const AdminDashboard = () => {
         return;
       }
       try {
-        const response = await axios.get("https://task-manager-backendservice.onrender.com/admin", {
+        const response = await axios.get("https://task-manager-backendservice.onrender.com/api/tasks/admin", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTasks(response.data);
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
   const handleAddTask = async () => {
     const token = localStorage.getItem("token");
     await axios.post(
-      "https://task-manager-backendservice.onrender.com",
+      "https://task-manager-backendservice.onrender.com/api/tasks",
       { ...newTask, assignedToEmails: newTask.assignedToEmails.split(",") }, // Split input string by commas
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
   const handleSaveTask = async () => {
     const token = localStorage.getItem("token");
     await axios.put(
-      `https://task-manager-backendservice.onrender.com/${currentTask._id}`,
+      `https://task-manager-backendservice.onrender.com/api/tasks/${currentTask._id}`,
       { ...currentTask, assignedToEmails: currentTask.assignedToEmails.split(",") }, // Split input string by commas
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -75,7 +75,7 @@ const AdminDashboard = () => {
   // Delete a task
   const handleDeleteTask = async (taskId) => {
     const token = localStorage.getItem("token");
-    await axios.delete(`https://task-manager-backendservice.onrender.com/${taskId}`, {
+    await axios.delete(`https://task-manager-backendservice.onrender.com/api/tasks/${taskId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     window.location.reload();
