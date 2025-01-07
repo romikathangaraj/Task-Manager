@@ -10,7 +10,7 @@ const MemberDashboard = () => {
     const fetchTasks = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await axios.get("http://localhost:5000/api/tasks", {
+        const response = await axios.get("https://task-manager-backendservice.onrender.com/api/tasks", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTasks(response.data);
@@ -27,7 +27,7 @@ const MemberDashboard = () => {
     const token = localStorage.getItem("token");
     try {
       // Update task status via API
-      await axios.put(`http://localhost:5000/api/tasks/${task._id}/status`, {}, {
+      await axios.put(`https://task-manager-backendservice.onrender.com/${task._id}/status`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
