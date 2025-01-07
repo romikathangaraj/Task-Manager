@@ -19,7 +19,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("https://task-manager-backendservice.onrender.com/login", {
+      const response = await axios.post("https://task-manager-backendservice.onrender.com/api/auth/login", {
         email,
         password,
       });
