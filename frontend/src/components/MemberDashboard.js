@@ -27,7 +27,7 @@ const MemberDashboard = () => {
     const token = localStorage.getItem("token");
     try {
       // Update task status via API
-      await axios.put(`https://task-manager-backendservice.onrender.com/${task._id}/status`, {}, {
+      await axios.put(`https://task-manager-backendservice.onrender.com/api/tasks/${task._id}/status`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
